@@ -77,10 +77,10 @@
             var value = model.get(keypath);
 
             var eventName = 'change' + (keypath === '*' ? '' : (':' + keypath));
-            model[action](eventName, callback);
+            model[action](eventName, callback.sync, callback);
 
             if (value instanceof Collection) {
-                value[action]('add remove reset sort', callback);
+                value[action]('add remove reset sort', callback.sync, callback);
             }
         };
     }

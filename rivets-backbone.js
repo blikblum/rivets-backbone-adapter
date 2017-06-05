@@ -45,14 +45,12 @@
         if (keypath === '*') {
             // all attributes
             value = obj.attributes;
+        } else if (keypath === '') {
+            // self
+            value = obj
         } else {
             // one attribute
             value = obj.get(keypath);
-        }
-
-        // rivets cant iterate over Backbone.Collection -> return Array
-        if (value instanceof Collection) {
-            return value.models;
         }
 
         return value;
@@ -65,19 +63,21 @@
     function onOffFactory(action) {
 
         /**
-         * @param {Model}    model
+         * @param {obj}    obj
          * @param {String}   keypath
          * @param {Function} callback
          */
-        return function (model, keypath, callback) {
-            if (!(model instanceof Model)) {
+        return function (obj, keypath, callback) {
+            if (!(obj instanceof Model) && !(obj instanceof Collection)) {
                 return;
             }
 
-            var value = model.get(keypath);
+            var value = keypath ? obj.get(keypath): obj;
 
-            var eventName = 'change' + (keypath === '*' ? '' : (':' + keypath));
-            model[action](eventName, callback.sync, callback);
+            if (obj instanceof Model) {
+              var eventName = 'change' + (keypath === '*' ? '' : (':' + keypath));
+              obj[action](eventName, callback.sync, callback);
+            }
 
             if (value instanceof Collection) {
                 value[action]('add remove reset sort', callback.sync, callback);

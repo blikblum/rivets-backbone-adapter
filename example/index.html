@@ -33,7 +33,7 @@
         </ul>
 
         <!-- 5) Star keypath returns all model's attributes and listens to change event -->
-        <div>Summary: <span rv-text="android:options.format < :*"></span></div>
+        <div>Summary: <span rv-text="android:options.format | compute android:options:*"></span></div>
         <div><textarea cols="30" rows="6" rv-value="android:options:* | json"></textarea></div>
 
         <h2>Jobs <button rv-on-click="android.addJob">Add</button></h2>
@@ -62,6 +62,13 @@
                 </ul>
             </li>
         </ul>
+        <h3>Bind to a collection using default adapter</h3>
+        <ul>
+            Items <button rv-on-click="addItem">Add</button> <button rv-on-click="removeItem">Remove</button>
+            <li rv-each-item="items:">
+                {item:name} 
+            </li>
+        </ul>
     </div>
 
     <pre class="log"></pre>
@@ -78,6 +85,10 @@
             return JSON.parse(string);
         }
     };
+
+    rivets.formatters.compute = function(value) {
+      return value
+    }
 
     //
     // Backbone Models
@@ -156,6 +167,12 @@
         }
     });
 
+    var items = new Backbone.Collection([
+        {name: 'item 1'},
+        {name: 'item 2'},
+        {name: 'item 3'}
+    ])
+
     //
     // Backbone Views
     //
@@ -164,7 +181,14 @@
 
             // rv-bind part
             this.binding = rivets.bind(this.el, {
-                android: this.model
+                android: this.model,
+                items: items,
+                addItem() {
+                    items.add({name: 'New Item'})
+                },
+                removeItem() {
+                    items.pop()
+                }
             });
         },
 

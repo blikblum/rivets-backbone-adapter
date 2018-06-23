@@ -3,16 +3,16 @@
     'use strict';
     if (typeof exports === 'object') {
         // CommonJS
-        factory(require('rivets'), require('backbone'));
+        factory(require('tinybind'), require('backbone'));
     } else if (typeof define === 'function' && define.amd) {
         // AMD. Register as an anonymous module.
-        define(['rivets', 'backbone'], factory);
+        define(['tinybind', 'backbone'], factory);
     } else {
         // Browser globals
-        factory(root.rivets, root.Backbone);
+        factory(root.tinybind, root.Backbone);
     }
 })
-(this, function (rivets, Backbone) {
+(this, function (tinybind, Backbone) {
     'use strict';
 
     var Model = Backbone.Model,
@@ -85,13 +85,13 @@
         };
     }
 
-    // Configure rivets data-bind for Backbone.js
-    rivets.adapters[':'] = {
+    // Configure tinybind data-bind for Backbone.js
+    tinybind.adapters[':'] = {
         observe: onOffFactory('on'),
         unobserve: onOffFactory('off'),
         get: getterSetter,
         set: getterSetter
     };
 
-    return rivets;
+    return tinybind;
 });

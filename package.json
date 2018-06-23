@@ -1,25 +1,25 @@
 {
-  "name": "rivets-backbone-adapter",
-  "version": "3.0.0",
-  "description": "Backbone.js adapter for Rivets.js data-bind with nested models and collections support.",
-  "main": "rivets-backbone.js",
+  "name": "tinybind-backbone-adapter",
+  "version": "1.0.0",
+  "description": "Backbone.js adapter for tinybind data-bind with nested models and collections support.",
+  "main": "tinybind-backbone.js",
   "directories": {
     "example": "example"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/azproduction/rivets-backbone-adapter"
+    "url": "https://github.com/blikblum/tinybind-backbone-adapter"
   },
   "keywords": [
-    "rivets",
+    "tinybind",
     "backbone"
   ],
   "author": "Mikhail Davydov <i@azproduction.ru>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/azproduction/rivets-backbone-adapter/issues"
+    "url": "https://github.com/blikblum/tinybind-backbone-adapter/issues"
   },
-  "homepage": "https://github.com/azproduction/rivets-backbone-adapter",
+  "homepage": "https://github.com/blikblum/tinybind-backbone-adapter",
   "scripts": {
     "test": "mocha"
   },
@@ -30,7 +30,7 @@
     "jsdom": "^11.0.0",
     "jsdom-global": "^3.0.2",
     "mocha": "^3.4.2",
-    "rivets": "blikblum/rivets#svelte",
+    "tinybind": "^0.11.0",
     "sinon": "^2.3.2",
     "sinon-chai": "^2.10.0",
     "underscore": "^1.8.3"

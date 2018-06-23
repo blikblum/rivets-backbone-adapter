@@ -1,5 +1,5 @@
-var rivets = require('rivets')
-require('../rivets-backbone')
+var tinybind = require('tinybind')
+require('../tinybind-backbone')
 var chai = require('chai')
 var sinon = require('sinon')
 var sinonChai = require('sinon-chai')
@@ -13,7 +13,7 @@ describe('Binding to a model', function () {
     beforeEach(function() {
       document.body.innerHTML = '<div rv-text="model:name"></div>' 
       this.model = new Backbone.Model({name: 'test', value: 'foo'})
-      this.view = rivets.bind(document.body, {model: this.model})
+      this.view = tinybind.bind(document.body, {model: this.model})
       this.binding = this.view.bindings[0]
     })
     
@@ -44,7 +44,7 @@ describe('Binding to a model', function () {
     beforeEach(function() {
       document.body.innerHTML = '<div rv-text="model:*"></div>' 
       this.model = new Backbone.Model({name: 'test', value: 'foo'})
-      this.view = rivets.bind(document.body, {model: this.model})
+      this.view = tinybind.bind(document.body, {model: this.model})
       this.binding = this.view.bindings[0]
     })
 
@@ -76,7 +76,7 @@ describe('Binding to a collection', function () {
     beforeEach(function() {
       document.body.innerHTML = '<div rv-text="collection:"></div>' 
       this.collection = new Backbone.Collection([{name: 'foo'}, {name: 'bar'}])
-      this.view = rivets.bind(document.body, {collection: this.collection})
+      this.view = tinybind.bind(document.body, {collection: this.collection})
       this.binding = this.view.bindings[0]
     })
     
@@ -101,7 +101,7 @@ describe('Binding to a collection', function () {
     beforeEach(function() {
       document.body.innerHTML = '<div rv-text="collection:*"></div>' 
       this.collection = new Backbone.Collection([{name: 'foo'}, {name: 'bar'}])
-      this.view = rivets.bind(document.body, {collection: this.collection})
+      this.view = tinybind.bind(document.body, {collection: this.collection})
       this.binding = this.view.bindings[0]
     })
 

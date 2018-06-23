@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Rivets.js Backbone Adapter example</title>
+    <title>tinybind Backbone Adapter example</title>
     <script type="text/javascript" src="vendors/jquery.min.js"></script>
     <script type="text/javascript" src="vendors/underscore.min.js"></script>
     <script type="text/javascript" src="vendors/backbone.min.js"></script>
     <script type="text/javascript" src="vendors/backbone-relational.js"></script>
-    <script type="text/javascript" src="vendors/rivets.min.js"></script>
-    <script type="text/javascript" src="../rivets-backbone.js"></script>
+    <script type="text/javascript" src="vendors/tinybind.js"></script>
+    <script type="text/javascript" src="../tinybind-backbone.js"></script>
 
     <style type="text/css">
         .body,
@@ -75,9 +75,9 @@
 </div>
 <script type="text/javascript">
     //
-    // Rivets Formatters for *-keypath example
+    // tinybind Formatters for *-keypath example
     //
-    rivets.formatters.json = {
+    tinybind.formatters.json = {
         read: function(object) {
             return JSON.stringify(object, null, 4);
         },
@@ -86,7 +86,7 @@
         }
     };
 
-    rivets.formatters.compute = function(value) {
+    tinybind.formatters.compute = function(value) {
       return value
     }
 
@@ -180,7 +180,7 @@
         initialize: function () {
 
             // rv-bind part
-            this.binding = rivets.bind(this.el, {
+            this.binding = tinybind.bind(this.el, {
                 android: this.model,
                 items: items,
                 addItem() {
